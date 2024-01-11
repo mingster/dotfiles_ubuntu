@@ -14,14 +14,15 @@ Managed with [`chezmoi`](https://chezmoi.io), a great dotfiles manager.
 
 You can use the [convenience script](./scripts/install_dotfiles.sh) to install the dotfiles on any machine with a single command. Simply run the following command in your terminal:
 
+
 ```bash
-sh -c "$(wget -qO- https://git.io/felipecrs-dotfiles)"
+sh -c "$(wget -qO- https://raw.githubusercontent.com/mingster/dotfiles_ubuntu/master/scripts/install_dotfiles.sh)"
 ```
 
 > 💡 We use `wget` here because it comes preinstalled with most Ubuntu versions. But you can also use `curl`:
 >
 > ```bash
->  sh -c "$(curl -fsSL https://git.io/felipecrs-dotfiles)"
+>  sh -c "$(curl -fsSL https://raw.githubusercontent.com/mingster/dotfiles_ubuntu/master/scripts/install_dotfiles.sh)"
 > ```
 
 ### Demo
@@ -78,13 +79,13 @@ The [getting started](#getting-started) step used the [convenience script](./scr
 It supports some environment variables:
 
 - `DOTFILES_REPO_HOST`: Defaults to `https://github.com`.
-- `DOTFILES_USER`: Defaults to `felipecrs`.
+- `DOTFILES_USER`: Defaults to `mingster`.
 - `DOTFILES_BRANCH`: Defaults to `master`.
 
 For example, you can use it to clone and install the dotfiles repository at the `beta` branch with:
 
 ```console
-DOTFILES_BRANCH=beta sh -c "$(wget -qO- https://git.io/felipecrs-dotfiles)"
+DOTFILES_BRANCH=beta sh -c "$(wget -qO- https://raw.githubusercontent.com/mingster/dotfiles_ubuntu/master/scripts/install_dotfiles.sh)"
 ```
 
 ### Installing without the convenience script
@@ -92,7 +93,7 @@ DOTFILES_BRANCH=beta sh -c "$(wget -qO- https://git.io/felipecrs-dotfiles)"
 If you prefer not to use the convenience script to install the dotfiles, you can also do it manually:
 
 ```bash
-git clone https://github.com/felipecrs/dotfiles "$HOME/.dotfiles"
+git clone https://github.com/mingster/dotfiles "$HOME/.dotfiles"
 
 "$HOME/.dotfiles/install.sh"
 ```
@@ -104,9 +105,9 @@ git clone https://github.com/felipecrs/dotfiles "$HOME/.dotfiles"
 If you are forking this repository, don't forget to change the following places:
 
 - [`README.md`](./README.md)
-  - Replace all occurrences of `https://git.io/felipecrs-dotfiles` with `https://raw.githubusercontent.com/<your-username>/dotfiles/HEAD/scripts/install_dotfiles.sh`
+  - Replace all occurrences of `https://raw.githubusercontent.com/mingster/dotfiles_ubuntu/master/scripts/install_dotfiles.sh` with `https://raw.githubusercontent.com/<your-username>/dotfiles/HEAD/scripts/install_dotfiles.sh`
 - [`scripts/install_dotfiles.sh`](./scripts/install_dotfiles.sh)
-  - Replace all occurrences of `felipecrs` with `<your-username>`
+  - Replace all occurrences of `mingster` with `<your-username>`
 - [`home/.chezmoi.yaml.tmpl`](./home/.chezmoi.yaml.tmpl)
   - Change the name and email to yours.
 
@@ -121,13 +122,13 @@ There are some scripts here to help you automate tricky activities when setting 
 If you already have this dotfiles [installed](#getting-started), you can use these scripts right away. Or, if you want to run it without installing the dotfiles, you can do something like:
 
 ```bash
-bash -c "$(curl -fsSL "https://raw.githubusercontent.com/felipecrs/dotfiles/master/scripts/<script-name>")" -- <arguments>
+bash -c "$(curl -fsSL "https://raw.githubusercontent.com/mingster/dotfiles_ubuntu/master/scripts/<script-name>")" -- <arguments>
 ```
 
 Just replace `<script-name>` and `<arguments>` with the desired values. Example:
 
 ```bash
-bash -c "$(curl -fsSL "https://raw.githubusercontent.com/felipecrs/dotfiles/master/scripts/create_alternative_chrome_shortcut.sh")" -- --force
+bash -c "$(curl -fsSL "https://raw.githubusercontent.com/mingster/dotfiles_ubuntu/master/scripts/create_alternative_chrome_shortcut.sh")" -- --force
 ```
 
 #### [`create_alternative_chrome_shortcut.sh`](scripts/create_alternative_chrome_shortcut.sh)
@@ -146,7 +147,7 @@ different user data directory. This lets you have different icons for different
 instances of Google Chrome.
 
 Please check the following URL for more information:
-  https://github.com/felipecrs/dotfiles#create_alternative_chrome_shortcutsh
+  https://github.com/mingster/dotfiles_ubuntu#create_alternative_chrome_shortcutsh
 ```
 
 ##### Examples

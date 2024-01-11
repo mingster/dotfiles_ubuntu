@@ -39,16 +39,28 @@
   stripComponents: 1
   exact: true
 
+".config/gitalias/gitalias.txt":
+  type: file
+  {{ $gitaliasRevision := includeTemplate "get-github-head-revision" (list "GitAlias/gitalias" $cache) }}
+  url: "https://github.com/GitAlias/gitalias/raw/{{ $gitaliasRevision }}/gitalias.txt"
+
 ".local/bin/direnv":
   type: file
   {{ $direnvVersion := includeTemplate "get-github-latest-version" (list "direnv/direnv" $cache) }}
   url: "https://github.com/direnv/direnv/releases/download/v{{ $direnvVersion }}/direnv.linux-{{ .chezmoi.arch }}"
   executable: true
 
+".local/bin/pkgx":
+  type: archive-file
+  {{ $pkgxVersion := includeTemplate "get-github-latest-version" (list "pkgxdev/pkgx" $cache) }}
+  url: "https://github.com/pkgxdev/pkgx/releases/download/v{{ $pkgxVersion }}/pkgx-{{ $pkgxVersion }}+linux+{{ .uname_arch | replace "_" "-" }}.tar.xz"
+  path: pkgx
+
+{{ if not .is_devcontainer -}}
 ".local/bin/kubecolor":
   type: archive-file
-  {{ $kubecolorVersion := includeTemplate "get-github-latest-version" (list "hidetatz/kubecolor" $cache) }}
-  url: "https://github.com/hidetatz/kubecolor/releases/download/v{{ $kubecolorVersion }}/kubecolor_{{ $kubecolorVersion }}_Linux_{{ .uname_arch }}.tar.gz"
+  {{ $kubecolorVersion := includeTemplate "get-github-latest-version" (list "kubecolor/kubecolor" $cache) }}
+  url: "https://github.com/kubecolor/kubecolor/releases/download/v{{ $kubecolorVersion }}/kubecolor_{{ $kubecolorVersion }}_linux_{{ .chezmoi.arch }}.tar.gz"
   path: kubecolor
 
 ".local/bin/kubectx":
@@ -88,7 +100,6 @@
   {{ $voltaVersion := includeTemplate "get-github-latest-version" (list "volta-cli/volta" $cache) }}
   url: "https://github.com/volta-cli/volta/releases/download/v{{ $voltaVersion }}/volta-{{ $voltaVersion }}-linux.tar.gz"
 
-{{ if not .is_devcontainer -}}
 {{   if .is_gnome -}}
 ".local/share/nautilus-python/extensions/code-nautilus.py":
   type: file

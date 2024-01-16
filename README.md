@@ -93,7 +93,7 @@ DOTFILES_BRANCH=beta sh -c "$(wget -qO- https://raw.githubusercontent.com/mingst
 If you prefer not to use the convenience script to install the dotfiles, you can also do it manually:
 
 ```bash
-git clone https://github.com/mingster/dotfiles "$HOME/.dotfiles"
+git clone https://github.com/mingster/dotfiles_ubuntu "$HOME/.dotfiles"
 
 "$HOME/.dotfiles/install.sh"
 ```
